@@ -8,7 +8,7 @@ import java.io.File
 import java.io.FileNotFoundException
 
 fun main() {
-    publishSubjectExample()
+    single()
 }
 
 private fun single() {
@@ -37,16 +37,4 @@ private fun loadText(filename: String): Single<String> {
 
         emitter.onSuccess(contents)
     }
-}
-
-private fun publishSubjectExample() {
-    val subscriptions = CompositeDisposable()
-    val publishSubject = PublishSubject.create<Int>()
-
-    val subscriptionOne = publishSubject.subscribe { int ->
-        println(int)
-    }
-
-    publishSubject.onNext(1)
-    subscriptions.add(subscriptionOne)
 }
